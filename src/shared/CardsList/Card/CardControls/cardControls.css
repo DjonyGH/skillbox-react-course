@@ -1,0 +1,64 @@
+.controls {
+  padding: 10px 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.karmaCounter > * + * {
+  padding: 0 0 0 4px;
+}
+.up, .down {
+  background: none;
+}
+.karmaValue {
+  color: var(--greyC4);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+svg.down {
+  transform: rotate(180deg);
+}
+.commentsButton {
+  display: flex;
+  align-items: normal;
+  background: none;
+}
+.commentsButton * {
+  color: var(--greyC4);
+}
+.commentsNumber {
+  padding: 0 0 0 6px;
+  font-size: 12px;
+  line-height: 14px;
+}
+.actions {
+  width: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.shareButton, .saveButton {
+  width: 20px;
+  height: 20px;
+  background: none;
+}
+@media all and (min-width: 1024px) {
+  .controls {
+    order:3;
+    max-width: 25px;
+    height: 50px;
+    padding: 0;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .karmaCounter > * + * {
+    padding: 0;
+  }
+  .commentsButton {
+    display: none;
+  }
+  .actions {
+    display: none;
+  }
+}

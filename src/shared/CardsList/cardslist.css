@@ -1,5 +1,7 @@
 @media all and (min-width: 1024px) {
   .cardList{
     padding: 40px 0;
+    border-radius: 7px;
+    background: var(--white);
   }
 }

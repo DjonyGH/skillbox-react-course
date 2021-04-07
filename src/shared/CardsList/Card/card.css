@@ -5,130 +5,16 @@
   flex-flow: row wrap;
   position: relative;
 }
+@media all and (min-width: 1024px) {
+  .card{
+    padding: 0 40px;
+    align-items: center;
+    flex-flow: row nowrap;
+  }
+  .card:not(:last-child){
+    margin-bottom: 40px;
+  }
+}
 .card > * {
   flex: 1 1 100%;
-}
-
-.textContent {
-  display: flex;
-  flex-flow: column nowrap;
-  padding: 22px 20px 13px;
-}
-.metaData {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  font-size: 10px;
-  line-height: 12px;
-}
-.userLink {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  height: 20px;
-  padding: 0 6px 0 0;
-}
-.avatar {
-  border-radius: 20px;
-  width: 20px;
-  height: 20px;
-  margin: 0 7px 0 0;
-}
-.userName {
-  color: var(--orange);
-}
-.publishedLabel {
-  display: none;
-}
-.createdAt, .createdAt * {
-  color: var(--grey99)
-}
-.title {
-  font-size: 16px;
-  line-height: 19px;
-  font-weight: normal;
-  margin: 0;
-  padding: 7px 0 0;
-}
-.postLink {
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-}
-
-.preview {
-  max-height: 178px;
-}
-.previewImg{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.menu {
-  position: absolute;
-  top: 17px;
-  right: 15px;
-}
-.menuButton {
-  width: 31px;
-  height: 31px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: rotate(90deg);
-  border-radius: 31px;
-  background: transparent;
-  border: 0;
-}
-.menuButton:active, .menuButton:hover {
-  background-color: rgba(51, 51, 51, 0.1);
-}
-
-.controls {
-  padding: 10px 20px;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-}
-.karmaCounter > * + * {
-  padding: 0 0 0 4px;
-}
-.up, .down {
-  background: none;
-}
-.karmaValue {
-  color: var(--greyC4);
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
-}
-svg.down {
-  transform: rotate(180deg);
-}
-
-.commentsButton {
-  display: flex;
-  align-items: normal;
-  background: none;
-}
-.commentsButton * {
-  color: var(--greyC4);
-}
-.commentsNumber {
-  padding: 0 0 0 6px;
-  font-size: 12px;
-  line-height: 14px;
-}
-.actions {
-  width: 50px;
-  display: flex;
-  justify-content: space-between;
-}
-.shareButton, .saveButton {
-  width: 20px;
-  height: 20px;
-  background: none;
 }
