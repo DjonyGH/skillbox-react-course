@@ -1,34 +1,42 @@
-import React, { ReactNode, useEffect } from 'react';
-import styles from './dropdown.css';
+import React, { ReactNode, useEffect } from "react";
+import styles from "./dropdown.css";
 
 interface IDropdownProps {
-  button: ReactNode
-  children: ReactNode
-  isOpen?: boolean
-  onOpen?: () => void
-  onClose?: () => void
+  button: ReactNode;
+  children: ReactNode;
+  isOpen?: boolean;
+  onOpen?: () => void;
+  onClose?: () => void;
 }
 
-const NOOP = () => {}
+const NOOP = () => {};
 
-export function Dropdown({button, children, isOpen, onOpen = NOOP, onClose = NOOP}: IDropdownProps) {
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen)
+export function Dropdown({
+  button,
+  children,
+  isOpen,
+  onOpen = NOOP,
+  onClose = NOOP,
+}: IDropdownProps) {
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen);
 
   useEffect(() => {
-    setIsDropdownOpen(isOpen)
-  }, [isOpen])
+    setIsDropdownOpen(isOpen);
+  }, [isOpen]);
 
-  useEffect(() => {isDropdownOpen ? onOpen : onClose}, [isDropdownOpen])
+  useEffect(() => {
+    isDropdownOpen ? onOpen : onClose;
+  }, [isDropdownOpen]);
 
   const handleOpen = () => {
     if (isOpen === undefined) {
-      setIsDropdownOpen(!isDropdownOpen)
+      setIsDropdownOpen(!isDropdownOpen);
     }
-  }
+  };
 
   return (
     <div className={styles.dropdown}>
-      <div onClick={handleOpen}>
+      <div className={styles.button} onClick={handleOpen}>
         {button}
       </div>
       {isDropdownOpen && (

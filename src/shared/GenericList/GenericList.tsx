@@ -1,29 +1,33 @@
-import React, { ReactNode, useEffect } from "react";
-import styles from "./genericList.css";
+import React from "react";
 
 interface IItem {
-  value: string;
+  text: string;
   id: string;
   onClick: (id: string) => void;
+  As?: "a" | "li" | "button" | "div";
+  href?: string;
+  icon?: string;
 }
 
-interface IMyListProps {
+interface IGenericListProps {
   list: IItem[];
+  classNameItem?: string;
 }
 
-export function MyList({ list }: IMyListProps) {
+export function GenericList({ list, classNameItem }: IGenericListProps) {
   return (
-    <ul>
-      {list.map((item) => (
-        <li
-          onClick={() => {
-            item.onClick(item.id);
-          }}
-          key={item.id}
-        >
-          {item.value}
-        </li>
+    <>
+      {list.map(({ As = "div", text, id, onClick, icon }) => (
+        <As className={classNameItem} onClick={() => onClick(id)} key={id}>
+          {icon && (
+            <img
+              src={require(`../../assets/img/${icon}.svg`).default}
+              alt="icon"
+            />
+          )}
+          <div>{text}</div>
+        </As>
       ))}
-    </ul>
+    </>
   );
 }

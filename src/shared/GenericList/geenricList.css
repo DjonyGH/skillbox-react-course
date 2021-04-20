@@ -1,15 +1,1 @@
-.dropdown {
-  width: 100%;
-  display: flex;
-  flex: 1 1 0%;
-}
-.listContainer {
-  position: relative;
-}
-.list {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+

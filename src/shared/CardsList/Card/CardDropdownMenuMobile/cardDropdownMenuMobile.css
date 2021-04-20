@@ -1,13 +1,13 @@
-.cardDropdownMenu {
-  position: absolute;
-  top: 39px;
-  right: 90px;
-  display: flex;
-  flex-direction: column;
+.cardDropdownMenuMobile {
+  display: none;
 }
 @media (max-width: 1024px) {
-  .cardDropdownMenu {
-    display: none;
+  .cardDropdownMenuMobile {
+    position: absolute;
+    top: 17px;
+    right: 17px;
+    display: flex;
+    flex-direction: column;
   }
 }
 .dropdownMenuItem {
