@@ -21,7 +21,6 @@ export function CardDropdownMenuMobile() {
       <Dropdown button={<CardMenuButton />}>
         <GenericList
           classNameItem={styles.dropdownMenuItem}
-          // @ts-ignore
           list={MENU.map(
             merge({
               onClick: (id: string) => {
@@ -29,7 +28,6 @@ export function CardDropdownMenuMobile() {
               },
             })
           )}
-          // list={MENU}
         />
       </Dropdown>
     </div>
