@@ -1,4 +1,5 @@
 import React from "react";
+import { Icon } from "../Icon";
 
 interface IItem {
   text: string;
@@ -20,10 +21,7 @@ export function GenericList({ list, classNameItem }: IGenericListProps) {
       {list.map(({ As = "div", text, id, onClick, icon }) => (
         <As className={classNameItem} onClick={() => onClick(id)} key={id}>
           {icon && (
-            <img
-              src={require(`../../assets/img/${icon}.svg`).default}
-              alt="icon"
-            />
+            <Icon name={icon}/>
           )}
           <div>{text}</div>
         </As>
