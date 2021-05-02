@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './icon.css';
 
 interface IIconProps {
@@ -7,9 +7,15 @@ interface IIconProps {
 }
 
 export function Icon({name, size=16}:IIconProps) {
-  return (
+  const [src, setSrc] = useState('');
+  useEffect(() => {
+    const src = require(`../../assets/img/${name}.svg`).default
+    setSrc(src)
+  }, [])
+  
+  return (    
     <img
-      src={require(`../../assets/img/${name}.svg`).default}
+      src={src}
       alt={name}
       style={{width:`${size}.px`, height:`${size}.px` }}
     />

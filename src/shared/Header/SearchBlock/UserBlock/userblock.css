@@ -1,0 +1,25 @@
+.userBlock {
+  display: flex;
+  align-items: center;
+}
+.userAvatar {
+  margin-right: 13px;
+}
+
+.userName {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: var(--black);
+}
+
+.userNameAnon {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: var(--grey99);
+}
