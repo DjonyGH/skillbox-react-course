@@ -30,8 +30,9 @@
   color: var(--grey99);
   display: none;
 }
-.createdAt, .createdAt * {
-  color: var(--grey99)
+.createdAt,
+.createdAt * {
+  color: var(--grey99);
 }
 .title {
   font-size: 16px;
@@ -64,25 +65,26 @@
     font-size: 20px;
     line-height: 23px;
   }
-    .postLink {
-      -webkit-line-clamp: 1;
-    }
+  .postLink {
+    -webkit-line-clamp: 1;
+  }
   .metaData {
     order: 2;
     font-size: 14px;
     line-height: 16px;
   }
-    .userLink {
-      order: 3;
-    }
-    .publishedLabel {
-      order: 1;
-      display: flex;    
-    }
-    .createdAt, .createdAt * {
-      order: 2;
-      padding: 0 7px 0 5px;
-    }
+  .userLink {
+    order: 3;
+  }
+  .publishedLabel {
+    order: 1;
+    display: flex;
+  }
+  .createdAt,
+  .createdAt * {
+    order: 2;
+    padding: 0 7px 0 5px;
+  }
   .viewedAd {
     order: 3;
     display: flex;

@@ -1,1 +1,1 @@
-export * from './CardTextContent';
+export * from './CardTextContent'

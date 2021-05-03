@@ -1,1 +1,1 @@
-export * from './CardDropdownMenuMobile';
+export * from './CardDropdownMenuMobile'

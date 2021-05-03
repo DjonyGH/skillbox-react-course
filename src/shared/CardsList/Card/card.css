@@ -1,4 +1,4 @@
-.card{
+.card {
   background-color: var(--white);
   border-radius: 7px;
   display: flex;
@@ -6,12 +6,12 @@
   position: relative;
 }
 @media all and (min-width: 1024px) {
-  .card{
+  .card {
     padding: 0 40px;
     align-items: center;
     flex-flow: row nowrap;
   }
-  .card:not(:last-child){
+  .card:not(:last-child) {
     margin-bottom: 40px;
   }
 }

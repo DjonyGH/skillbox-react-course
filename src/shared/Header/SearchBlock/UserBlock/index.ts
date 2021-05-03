@@ -1,1 +1,1 @@
-export * from './UserBlock';
+export * from './UserBlock'

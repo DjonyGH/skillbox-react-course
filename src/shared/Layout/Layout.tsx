@@ -1,15 +1,10 @@
-import React from 'react';
+import React from 'react'
 import styles from './layout.css'
 
 interface ILayoutProps {
-    children?: React.ReactNode;
+  children?: React.ReactNode
 }
 
-export function Layout({ children}: ILayoutProps) {
-    return (
-        <div className={styles.layout}>
-            {children}
-        </div>
-
-    )
+export function Layout({ children }: ILayoutProps) {
+  return <div className={styles.layout}>{children}</div>
 }
