@@ -4,22 +4,33 @@
 }
 .userAvatar {
   margin-right: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.userAvatar:hover {
+  border: 1px solid var(--orange);
 }
 
 .userName {
+  display: flex;
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 23px;
   color: var(--black);
+  cursor: pointer;
+}
+
+.userName:hover {
+  color: var(--orange);
 }
 
 .userNameAnon {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 23px;
   color: var(--grey99);
 }
