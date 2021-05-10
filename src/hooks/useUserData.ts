@@ -18,6 +18,8 @@ export function useUserData() {
       })
       .then((resp) => {
         const userData = resp.data;
+        console.log("userData", userData);
+        
         setData({
           name: userData.name,
           iconImg: userData.icon_img,

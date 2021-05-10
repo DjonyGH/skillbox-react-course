@@ -14,9 +14,9 @@ export function UserBlock({ avatarSrc, userName }: IUserBlockProps) {
       className={styles.userBlock}
     >
       <div className={styles.userAvatar}>
-        {/* {avatarSrc
-          ? <img src={avatarSrc} alt="userAvatar" className={styles.avatarImg}/> */}
-        <Icon name="icon" size={50} />
+        {avatarSrc
+          ? <img src={avatarSrc} alt="userAvatar" className={styles.avatarImg}/>
+          : <Icon name="icon" size={50} />}
       </div>
       <div
         className={[styles.userName, !userName ? styles.userNameAnon : ""].join(
