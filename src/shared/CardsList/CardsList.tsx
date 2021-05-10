@@ -3,16 +3,14 @@ import styles from './cardslist.css'
 import { Card } from './Card'
 import { PostsContextProvider } from '../context/postsContext'
 import { postsContext, IPostsContextData } from '../context/postsContext'
-import { generateId } from '../../utils/react/generateRandomIndex'
 
 export function CardsList() {
   const posts = useContext<IPostsContextData[]>(postsContext)
   console.log('>>', posts)
-  posts
 
   return (
     <ul className={styles.cardList}>
-      {posts.map(generateId).map((post) => (
+      {posts.map((post) => (
         <Card
           key={post.id}
           author={post.author}

@@ -1,7 +1,14 @@
 import React from 'react'
 import styles from './cardTextContent.css'
+import { calcElapsedTime } from '../../../../utils/react/calcElapsedTime'
 
-export function CardTextContent({ title }: { title: string | undefined }) {
+interface ICardTextContentProps {
+  title?: string
+  author?: string
+  created?: number
+}
+
+export function CardTextContent({ title, author, created }: ICardTextContentProps) {
   return (
     <div className={styles.textContent}>
       <div className={styles.metaData}>
@@ -12,11 +19,11 @@ export function CardTextContent({ title }: { title: string | undefined }) {
             alt='avatar'
           />
           <a href='#user-url' className={styles.userName}>
-            Дмитрий Гришин
+            {author}
           </a>
         </div>
         <span className={styles.publishedLabel}>опубликовано</span>
-        <span className={styles.createdAt}>4 часа назад</span>
+        <span className={styles.createdAt}>{created ? calcElapsedTime(created) : ''}</span>
       </div>
       <h2 className={styles.title}>
         <a href='#post-url' className={styles.postLink}>

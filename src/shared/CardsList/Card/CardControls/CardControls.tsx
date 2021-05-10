@@ -1,7 +1,12 @@
 import React from 'react'
 import styles from './cardControls.css'
 
-export function CardControls() {
+interface ICardControlsProps {
+  score?: number
+  comments?: number
+}
+
+export function CardControls({ score, comments }: ICardControlsProps) {
   return (
     <div className={styles.controls}>
       <div className={styles.karmaCounter}>
@@ -10,7 +15,7 @@ export function CardControls() {
             <path d='M9.5 0L0 10H19L9.5 0Z' fill='#C4C4C4' />
           </svg>
         </button>
-        <span className={styles.karmaValue}>234</span>
+        <span className={styles.karmaValue}>{score}</span>
         <button className={styles.down}>
           <svg
             className={styles.down}
@@ -32,7 +37,7 @@ export function CardControls() {
             fill='#C4C4C4'
           />
         </svg>
-        <span className={styles.commentsNumber}>14</span>
+        <span className={styles.commentsNumber}>{comments}</span>
       </button>
 
       <div className={styles.actions}>

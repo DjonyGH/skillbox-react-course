@@ -10,15 +10,15 @@ import { IPostsContextData } from '../../context/postsContext'
 export function Card(props: IPostsContextData) {
   return (
     <li className={styles.card}>
-      <CardTextContent title={props.title} />
+      <CardTextContent title={props.title} author={props.author} created={props.created} />
 
-      <CardImgPreview />
+      <CardImgPreview previewImg={props.previewImg} />
 
       <CardDropdownMenu />
 
       <CardDropdownMenuMobile />
 
-      <CardControls />
+      <CardControls score={props.score} comments={props.comments} />
     </li>
   )
 }
