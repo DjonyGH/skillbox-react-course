@@ -5,15 +5,12 @@ import { CardImgPreview } from './CardImgPreview'
 import { CardDropdownMenu } from './CardDropdownMenu'
 import { CardTextContent } from './CardTextContent'
 import { CardDropdownMenuMobile } from './CardDropdownMenuMobile'
-import { usePostsData } from "../../../hooks/usePostsData";
+import { IPostsContextData } from '../../context/postsContext'
 
-export function Card() {
-  const [data] = usePostsData();
-  console.log('test', data);
-  
+export function Card(props: IPostsContextData) {
   return (
     <li className={styles.card}>
-      <CardTextContent />
+      <CardTextContent title={props.title} />
 
       <CardImgPreview />
 

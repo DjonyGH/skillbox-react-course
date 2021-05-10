@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './cardTextContent.css'
 
-export function CardTextContent() {
+export function CardTextContent({ title }: { title: string | undefined }) {
   return (
     <div className={styles.textContent}>
       <div className={styles.metaData}>
@@ -20,8 +20,7 @@ export function CardTextContent() {
       </div>
       <h2 className={styles.title}>
         <a href='#post-url' className={styles.postLink}>
-          Стоит отметить, что новая модель организационной деятельности. Стоит отметить, что новая модель
-          организационной деятельности.
+          {title}
         </a>
       </h2>
       <div className={styles.viewedAd}>
