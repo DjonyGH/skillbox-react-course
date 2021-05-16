@@ -22,7 +22,6 @@ export function CardDropdownMenu() {
   }
   return (
     <div className={styles.cardDropdownMenu}>
-      {/* <CardMenuButton /> */}
       <Dropdown button={<CardMenuButton />}>
         <GenericList
           classNameItem={styles.dropdownMenuItem}

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { useCloseOnClickOut } from '../../hooks/useCloseOnClickOut'
+import { CommentForm } from './CommentForm'
 import styles from './post.css'
 
 interface IPostProps {
@@ -9,18 +10,6 @@ interface IPostProps {
 }
 
 export function Post({ title, onClose }: IPostProps) {
-  // const ref = useRef<HTMLDivElement>(null)
-
-  // useEffect(() => {
-  //   const handleClick = (e: MouseEvent) => {
-  //     if (e.target instanceof Node && !ref.current?.contains(e.target)) onClose?.()
-  //   }
-  //   document.addEventListener('click', handleClick)
-  //   return () => {
-  //     removeEventListener('click', handleClick)
-  //   }
-  // }, [])
-
   const [ref] = useCloseOnClickOut(onClose)
 
   const node = document.querySelector('.modal_root')
@@ -33,6 +22,7 @@ export function Post({ title, onClose }: IPostProps) {
         <p>Есть над чем задуматься: тщательные исследования конкурентов представляют собой не что иное</p>
         <p>Есть над чем задуматься: тщательные исследования конкурентов представляют собой не что иное</p>
       </div>
+      <CommentForm />
     </div>,
     node
   )
