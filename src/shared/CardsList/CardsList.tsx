@@ -6,7 +6,6 @@ import { postsContext, IPostsContextData } from '../context/postsContext'
 
 export function CardsList() {
   const posts = useContext<IPostsContextData[]>(postsContext)
-  console.log('>>', posts)
 
   return (
     <ul className={styles.cardList}>

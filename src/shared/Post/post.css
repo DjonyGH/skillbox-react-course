@@ -1,0 +1,18 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  width: 960px;
+  margin-top: 200px;
+  padding: 52px 60px;
+  border-radius: 7px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+.title {
+  font-size: 20px;
+  line-height: 23px;
+}
+.content {
+  font-size: 14px;
+  line-height: 16px;
+}

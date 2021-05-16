@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './cardTextContent.css'
 import { calcElapsedTime } from '../../../../utils/react/calcElapsedTime'
+import { Post } from '../../../Post'
 
 interface ICardTextContentProps {
   title?: string
@@ -9,6 +10,7 @@ interface ICardTextContentProps {
 }
 
 export function CardTextContent({ title, author, created }: ICardTextContentProps) {
+  const [isModalOpened, setIsModalOpened] = useState(false)
   return (
     <div className={styles.textContent}>
       <div className={styles.metaData}>
@@ -26,7 +28,7 @@ export function CardTextContent({ title, author, created }: ICardTextContentProp
         <span className={styles.createdAt}>{created ? calcElapsedTime(created) : ''}</span>
       </div>
       <h2 className={styles.title}>
-        <a href='#post-url' className={styles.postLink}>
+        <a href='#post-url' className={styles.postLink} onClick={() => setIsModalOpened(true)}>
           {title}
         </a>
       </h2>
@@ -39,6 +41,7 @@ export function CardTextContent({ title, author, created }: ICardTextContentProp
         </svg>
         1 час назад
       </div>
+      {isModalOpened && <Post title={title} onClose={() => setIsModalOpened(false)} />}
     </div>
   )
 }
