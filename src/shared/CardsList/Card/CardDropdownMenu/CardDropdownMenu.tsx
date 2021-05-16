@@ -4,7 +4,7 @@ import { generateId } from '../../../../utils/react/generateRandomIndex'
 import { merge } from '../../../../utils/js/merge'
 import { GenericList } from '../../../GenericList'
 import styles from './cardDropdownMenu.css'
-import { Dropdown } from '../../../Dropdown'
+import { Dropdown } from '../../../DropdownPortal'
 import { CardMenuButton } from '../CardMenuButton'
 
 const MENU = [
@@ -22,6 +22,7 @@ export function CardDropdownMenu() {
   }
   return (
     <div className={styles.cardDropdownMenu}>
+      {/* <CardMenuButton /> */}
       <Dropdown button={<CardMenuButton />}>
         <GenericList
           classNameItem={styles.dropdownMenuItem}

@@ -11,8 +11,8 @@ export const indexTemplate = (content, token) => `
     </script>
 </head>
 <body>
-    <div class="root">${content}</div>
     <div class="modal_root"></div>
+    <div class="root">${content}</div>    
 </body>
 </html>
 `

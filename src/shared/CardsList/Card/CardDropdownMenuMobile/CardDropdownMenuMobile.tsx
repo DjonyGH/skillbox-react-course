@@ -18,7 +18,8 @@ export function CardDropdownMenuMobile() {
   }
   return (
     <div className={styles.cardDropdownMenuMobile}>
-      <Dropdown button={<CardMenuButton />}>
+      <CardMenuButton />
+      {/* <Dropdown button={<CardMenuButton />}>
         <GenericList
           classNameItem={styles.dropdownMenuItem}
           list={MENU.map(
@@ -29,7 +30,7 @@ export function CardDropdownMenuMobile() {
             })
           )}
         />
-      </Dropdown>
+      </Dropdown> */}
     </div>
   )
 }
