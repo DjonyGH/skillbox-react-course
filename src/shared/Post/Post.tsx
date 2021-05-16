@@ -1,16 +1,21 @@
 import React, { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { useCloseOnClickOut } from '../../hooks/useCloseOnClickOut'
+import { useCommentsData } from '../../hooks/useCommentsData'
 import { CommentForm } from './CommentForm'
+import { Comment } from './Comment'
 import styles from './post.css'
 
 interface IPostProps {
+  id?: string
   title?: string
   onClose: () => void
 }
 
-export function Post({ title, onClose }: IPostProps) {
+export function Post({ id, title, onClose }: IPostProps) {
   const [ref] = useCloseOnClickOut(onClose)
+
+  // const [comments] = useCommentsData(id)
 
   const node = document.querySelector('.modal_root')
   if (!node) return null
@@ -23,6 +28,8 @@ export function Post({ title, onClose }: IPostProps) {
         <p>Есть над чем задуматься: тщательные исследования конкурентов представляют собой не что иное</p>
       </div>
       <CommentForm />
+      {/* {comments.length > 0 &&
+        comments.map((comment) => <Comment author={comment.author} text={comment.text} created={comment.created} />)} */}
     </div>,
     node
   )

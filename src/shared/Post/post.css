@@ -6,7 +6,7 @@
   background: var(--white);
   width: 960px;
   padding: 52px 60px;
-  border-radius: 7px;
+  border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   z-index: 10;
 }

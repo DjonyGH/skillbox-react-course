@@ -11,6 +11,10 @@
   height: 90px;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
+  outline: none;
+}
+.input:focus {
+  border: 1px solid var(--grey66);
 }
 .controls {
   display: flex;

@@ -12,6 +12,7 @@ export function CardsList() {
       {posts.map((post) => (
         <Card
           key={post.id}
+          id={post.id}
           author={post.author}
           previewImg={post.previewImg}
           title={post.title}

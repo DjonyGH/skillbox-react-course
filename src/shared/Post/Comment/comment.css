@@ -1,0 +1,22 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+}
+.commentInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.avatar {
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+  margin: 0 7px 0 0;
+}
+.userName {
+  color: var(--orange);
+}
+.createdAt,
+.createdAt * {
+  color: var(--grey99);
+}
