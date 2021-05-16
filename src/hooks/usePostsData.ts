@@ -24,8 +24,6 @@ export function usePostsData() {
         })
         .then((resp) => {
           const postsData = resp.data.data.children
-          console.log('>>>', postsData)
-
           const posts: IPostsData[] = postsData.map((post: any) => {
             return {
               id: post.data.id ? post.data.id : '',

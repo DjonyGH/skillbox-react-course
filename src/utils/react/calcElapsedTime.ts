@@ -1,7 +1,5 @@
 export const calcElapsedTime = (timestamp: number): string => {
   const currentTimestamp: number = new Date().getTime() / 1000
-  console.log('timestamp', timestamp)
-  console.log('currentTimestamp', currentTimestamp)
   if (Math.floor(currentTimestamp - timestamp) < 60) return (currentTimestamp - timestamp).toFixed(0) + ' секунд назад'
   else if (Math.floor((currentTimestamp - timestamp) / 60) < 60)
     return ((currentTimestamp - timestamp) / 60).toFixed(0) + ' минут назад'
