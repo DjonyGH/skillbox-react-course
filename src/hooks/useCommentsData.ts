@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { useContext, useEffect, useState } from 'react'
-import { tokenContext } from '../shared/context/tokenContext'
+import { useEffect, useState } from 'react'
+
 
 interface IUseCommentData {
   id?: string
@@ -11,8 +11,6 @@ interface IUseCommentData {
 
 export function useCommentsData(id: string = '') {
   const [data, setData] = useState<IUseCommentData[]>([])
-  const token = useContext(tokenContext)
-
 
   useEffect(() => {
     if (!!id) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef} from 'react'
 
 export function useCloseOnClickOut(onClose: () => void) {
   const ref = useRef<HTMLDivElement>(null)
@@ -9,7 +9,7 @@ export function useCloseOnClickOut(onClose: () => void) {
     }
     document.addEventListener('click', handleClick)
     return () => {
-      removeEventListener('click', handleClick)
+      document.removeEventListener('click', handleClick)
     }
   }, [])
   return [ref]

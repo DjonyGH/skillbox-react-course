@@ -9,6 +9,7 @@ import { useToken } from "./hooks/useToken";
 import { tokenContext } from "./shared/context/tokenContext";
 import { UserContextProvider } from "./shared/context/userContext";
 import { PostsContextProvider } from "./shared/context/postsContext";
+import { CommentContextProvider } from "./shared/context/commentContext";
 
 function AppComponent() {
   const [token] = useToken();
@@ -16,16 +17,18 @@ function AppComponent() {
     <tokenContext.Provider value={token}>
       <UserContextProvider>
         <PostsContextProvider>
-          <Layout>
-            <Header />
-            <Content>
-              <CardsList />
-            </Content>
-          </Layout>
+          <CommentContextProvider>
+            <Layout>
+              <Header />
+              <Content>
+                <CardsList />
+              </Content>
+            </Layout>
+          </CommentContextProvider>
         </PostsContextProvider>
       </UserContextProvider>
     </tokenContext.Provider>
   );
 }
 
-export const App: React.FC = hot(() => <AppComponent/>);
+export const App: React.FC = hot(() => <AppComponent />);

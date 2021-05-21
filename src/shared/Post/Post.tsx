@@ -15,11 +15,14 @@ interface IPostProps {
 export function Post({ id, title, onClose }: IPostProps) {
   const [ref] = useCloseOnClickOut(onClose);
 
+  const refCommentInput = useRef<HTMLTextAreaElement>(null);
+
   const [comments] = useCommentsData(id);
   console.log("comments", comments);
 
   const node = document.querySelector(".modal_root");
   if (!node) return null;
+
   return ReactDOM.createPortal(
     <div className={styles.modal} ref={ref}>
       <h2 className={styles.title}>{title}</h2>
@@ -37,9 +40,17 @@ export function Post({ id, title, onClose }: IPostProps) {
           представляют собой не что иное
         </p>
       </div>
-      <CommentForm />
-      {/* {comments.length > 0 &&
-        comments.map((comment) => <Comment author={comment.author} text={comment.text} created={comment.created} />)} */}
+      <CommentForm refCommentInput={refCommentInput} />
+      {comments.length > 0 &&
+        comments.map((comment) => (
+          <Comment
+            key={comment.id}
+            author={comment.author}
+            text={comment.text}
+            created={comment.created}
+            refCommentInput={refCommentInput}
+          />
+        ))}
     </div>,
     node
   );

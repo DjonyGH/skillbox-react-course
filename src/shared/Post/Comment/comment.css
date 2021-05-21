@@ -1,11 +1,13 @@
 .comment {
   display: flex;
   flex-direction: column;
+  padding: 20px 0;
 }
 .commentInfo {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  padding-bottom: 10px;
 }
 .avatar {
   border-radius: 20px;
@@ -19,4 +21,29 @@
 .createdAt,
 .createdAt * {
   color: var(--grey99);
+  margin-left: 5px;
+}
+.commentControls {
+  margin: 5px 0;
+  display: flex;
+}
+.answerButton {
+  width: 90px;
+  height: 20px;
+  background: inherit;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.answerButtonText {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--gray99);
+  margin-left: 5px;
+}
+.answerButton:active .answerButtonText {
+  color: var(--orange);
 }

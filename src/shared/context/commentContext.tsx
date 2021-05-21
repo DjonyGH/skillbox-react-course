@@ -1,12 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-export const commentContext = React.createContext<string>('')
-
-interface ICommentContextProviderProps {
-  children?: React.ReactNode
+interface ICommentContext {
+  value: string;
+  onChange: (value: string) => void;
 }
 
-export function CommentContextProvider({ children }: ICommentContextProviderProps) {
-  const [commentValue, setCommentValue] = useState<string>('')
-  return <commentContext.Provider value={commentValue}>{children}</commentContext.Provider>
+export const commentContext = React.createContext<ICommentContext>({
+  value: "",
+  onChange: () => {},
+});
+
+interface ICommentContextProviderProps {
+  children?: React.ReactNode;
+}
+
+export function CommentContextProvider({
+  children,
+}: ICommentContextProviderProps) {
+  const [commentValue, setCommentValue] = useState<string>("");
+  return (
+    <commentContext.Provider
+      value={{ value: commentValue, onChange: setCommentValue }}
+    >
+      {children}
+    </commentContext.Provider>
+  );
 }
