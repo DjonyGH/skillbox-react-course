@@ -1,62 +1,50 @@
-import React, { useContext } from "react";
-import { commentContext } from "../../context/commentContext";
-import { calcElapsedTime } from "../../../utils/react/calcElapsedTime";
-import styles from "./comment.css";
+import React from 'react'
+import { calcElapsedTime } from '../../../utils/react/calcElapsedTime'
+import styles from './comment.css'
+import { useDispatch } from 'react-redux'
+import { updateComment } from '../../../strore'
 
 interface ICommentProps {
-  id?: string;
-  author?: string;
-  text?: string;
-  created?: number;
-  refCommentInput: React.RefObject<HTMLTextAreaElement>;
+  id?: string
+  author?: string
+  text?: string
+  created?: number
+  refCommentInput: React.RefObject<HTMLTextAreaElement>
 }
 
-export const Comment: React.FC<ICommentProps> = ({
-  author,
-  text,
-  created,
-  refCommentInput,
-}) => {
-  const { onChange } = useContext(commentContext);
+export const Comment: React.FC<ICommentProps> = ({ author, text, created, refCommentInput }) => {
+  const dispatch = useDispatch()
 
   const handleClick = () => {
-    author && onChange(`${author}, `);
-    refCommentInput?.current?.focus();
-  };
+    author && dispatch(updateComment(`${author}, `))
+    refCommentInput?.current?.focus()
+  }
 
   return (
     <div className={styles.comment}>
       <div className={styles.commentInfo}>
         <img
           className={styles.avatar}
-          src="https://cdn.dribbble.com/users/6487119/avatars/normal/ea69d98ea3643959838e2ef4e421e107.png?1606648385&compress=1&resize=60x60"
-          alt="avatar"
+          src='https://cdn.dribbble.com/users/6487119/avatars/normal/ea69d98ea3643959838e2ef4e421e107.png?1606648385&compress=1&resize=60x60'
+          alt='avatar'
         />
-        <a href="#user-url" className={styles.userName}>
+        <a href='#user-url' className={styles.userName}>
           {author}
         </a>
-        <span className={styles.createdAt}>
-          {created ? calcElapsedTime(created) : ""}
-        </span>
+        <span className={styles.createdAt}>{created ? calcElapsedTime(created) : ''}</span>
       </div>
       <div className={styles.commentText}>{text}</div>
       <div className={styles.commentControls}>
         <button className={styles.answerButton} onClick={handleClick}>
-          <svg
-            width="15"
-            height="15"
-            viewBox="0 0 15 15"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
-              d="M12.75 0H1.41667C0.6375 0 0 0.6375 0 1.41667V9.91667C0 10.6958 0.6375 11.3333 1.41667 11.3333H11.3333L14.1667 14.1667V1.41667C14.1667 0.6375 13.5292 0 12.75 0ZM11.3333 8.5H2.83333V7.08333H11.3333V8.5ZM11.3333 6.375H2.83333V4.95833H11.3333V6.375ZM11.3333 4.25H2.83333V2.83333H11.3333V4.25Z"
-              fill="#C4C4C4"
+              d='M12.75 0H1.41667C0.6375 0 0 0.6375 0 1.41667V9.91667C0 10.6958 0.6375 11.3333 1.41667 11.3333H11.3333L14.1667 14.1667V1.41667C14.1667 0.6375 13.5292 0 12.75 0ZM11.3333 8.5H2.83333V7.08333H11.3333V8.5ZM11.3333 6.375H2.83333V4.95833H11.3333V6.375ZM11.3333 4.25H2.83333V2.83333H11.3333V4.25Z'
+              fill='#C4C4C4'
             />
           </svg>
           <span className={styles.answerButtonText}>Ответить</span>
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
