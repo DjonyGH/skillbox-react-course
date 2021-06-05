@@ -1,4 +1,5 @@
-import { ActionCreator, Reducer } from 'redux'
+import { Action, ActionCreator, Reducer } from 'redux'
+import { ThunkAction } from 'redux-thunk'
 import {
   TMeRequestAction,
   TMeRequestErrorAction,
@@ -44,6 +45,12 @@ export const setToken: ActionCreator<TSetTokenAction> = (token: string) => ({
   type: SET_TOKEN,
   token,
 })
+
+export const saveToken = (): ThunkAction<void, TRootState, unknown, Action<string>> => (dispatch, _getState) => {
+  if (window.__token__ !== 'undefined') {
+    dispatch(setToken(window.__token__))
+  }
+}
 
 type TMyAction =
   | TUpdateCommentAction

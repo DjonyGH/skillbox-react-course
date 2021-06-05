@@ -1,7 +1,6 @@
 import axios from 'axios'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { tokenContext } from '../shared/context/tokenContext'
 import { TRootState } from '../store/reducer'
 
 interface IPostsData {
@@ -16,7 +15,6 @@ interface IPostsData {
 
 export function usePostsData() {
   const [data, setData] = useState<IPostsData[]>([])
-  // const token = useContext(tokenContext)
   const token = useSelector<TRootState, string>((state) => state.token)
 
   useEffect(() => {
@@ -31,7 +29,6 @@ export function usePostsData() {
             return {
               id: post.data.id ? post.data.id : '',
               author: post.data.author ? post.data.author : '',
-              // previewImg: post.data.preview ? post.data.preview.images[0].source.url : '',
               previewImg: post.data.thumbnail !== 'self' ? post.data.thumbnail : '',
               title: post.data.title ? post.data.title : '',
               created: post.data.created_utc ? post.data.created_utc : 0,

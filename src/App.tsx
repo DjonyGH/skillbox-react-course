@@ -9,9 +9,9 @@ import { useToken } from './hooks/useToken'
 import { UserContextProvider } from './shared/context/userContext'
 import { PostsContextProvider } from './shared/context/postsContext'
 import { Action, applyMiddleware, createStore, Middleware } from 'redux'
-import { rootReducer, setToken, TRootState } from './store/reducer'
+import { rootReducer, saveToken, setToken, TRootState } from './store/reducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { Provider } from 'react-redux'
+import { Provider, useDispatch, useSelector } from 'react-redux'
 import thunk, { ThunkAction } from 'redux-thunk'
 
 // const logger: Middleware = (store) => (next) => (action) => {
@@ -22,13 +22,19 @@ import thunk, { ThunkAction } from 'redux-thunk'
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 function AppComponent() {
-  const [token] = useToken()
+  // const [token] = useToken()
 
+  // useEffect(() => {
+  //   if (token) {
+  //     store.dispatch(setToken(token))
+  //   }
+  // }, [token])
+
+  const token = useSelector<TRootState, string>((state) => state.token)
+  const dispatch = useDispatch()
   useEffect(() => {
-    if (token) {
-      store.dispatch(setToken(token))
-    }
-  }, [token])
+    dispatch(saveToken())
+  }, [])
 
   return (
     <UserContextProvider>
