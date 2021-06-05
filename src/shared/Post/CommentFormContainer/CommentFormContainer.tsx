@@ -18,7 +18,6 @@ export const CommentFormContainer: React.FC<ICommentFormContainer> = ({ refComme
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    console.log(value)
   }
 
   return <CommentForm value={value} onChange={handleChange} onSubmit={handleSubmit} refCommentInput={refCommentInput} />

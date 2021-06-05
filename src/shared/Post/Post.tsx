@@ -19,7 +19,6 @@ export function Post({ id, title, onClose }: IPostProps) {
   const refCommentInput = useRef<HTMLTextAreaElement>(null)
 
   const [comments] = useCommentsData(id)
-  console.log('comments', comments)
 
   const node = document.querySelector('.modal_root')
   if (!node) return null

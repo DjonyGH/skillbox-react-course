@@ -13,9 +13,7 @@ const MENU = [
 ].map(generateId)
 
 export function CardDropdownMenuMobile() {
-  const handleItemClick = (id: string) => {
-    console.log('id', id)
-  }
+  const handleItemClick = (id: string) => {}
   return (
     <div className={styles.cardDropdownMenuMobile}>
       <Dropdown button={<CardMenuButton />}>

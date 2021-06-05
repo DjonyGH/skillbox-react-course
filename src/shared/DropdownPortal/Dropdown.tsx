@@ -32,9 +32,6 @@ export function Dropdown({ button, children, isOpen, onOpen = NOOP, onClose = NO
     const buttonX = button.getBoundingClientRect().left + pageXOffset
     const buttonY = button.getBoundingClientRect().top + pageYOffset
 
-    console.log('buttonX >>', buttonX)
-    console.log('buttonY >>', buttonY)
-
     setButtonX(buttonX)
     setButtonY(buttonY)
 
