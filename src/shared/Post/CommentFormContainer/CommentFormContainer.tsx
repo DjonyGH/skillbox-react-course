@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { TRootState, updateComment } from '../../../strore'
+import { TRootState, updateComment } from '../../../store/reducer'
 import { commentContext } from '../../context/commentContext'
 import { CommentForm } from '../CommentForm/CommentForm'
 

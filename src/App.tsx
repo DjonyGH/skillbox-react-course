@@ -9,9 +9,9 @@ import { useToken } from './hooks/useToken'
 import { UserContextProvider } from './shared/context/userContext'
 import { PostsContextProvider } from './shared/context/postsContext'
 import { Action, applyMiddleware, createStore, Middleware } from 'redux'
-import { rootReducer, setToken, TRootState } from './strore'
+import { rootReducer, setToken, TRootState } from './store/reducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { Provider, useDispatch } from 'react-redux'
+import { Provider } from 'react-redux'
 import thunk, { ThunkAction } from 'redux-thunk'
 
 // const logger: Middleware = (store) => (next) => (action) => {
@@ -21,21 +21,12 @@ import thunk, { ThunkAction } from 'redux-thunk'
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
-const timout = (): ThunkAction<void, TRootState, unknown, Action<string>> => (dispatch, _getState) => {
-  dispatch({ type: 'START' })
-  setTimeout(() => {
-    dispatch({ type: 'FINISH' })
-  }, 2000)
-}
-
 function AppComponent() {
   const [token] = useToken()
 
   useEffect(() => {
     if (token) {
       store.dispatch(setToken(token))
-      //@ts-ignore
-      store.dispatch(timout())
     }
   }, [token])
 

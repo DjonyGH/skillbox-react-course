@@ -2,7 +2,7 @@ import React from 'react'
 import { calcElapsedTime } from '../../../utils/react/calcElapsedTime'
 import styles from './comment.css'
 import { useDispatch } from 'react-redux'
-import { updateComment } from '../../../strore'
+import { updateComment } from '../../../store/reducer'
 
 interface ICommentProps {
   id?: string

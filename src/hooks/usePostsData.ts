@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { tokenContext } from '../shared/context/tokenContext'
-import { TRootState } from '../strore'
+import { TRootState } from '../store/reducer'
 
 interface IPostsData {
   id?: string
