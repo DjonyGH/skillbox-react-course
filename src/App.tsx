@@ -30,7 +30,7 @@ function AppComponent() {
   //   }
   // }, [token])
 
-  const token = useSelector<TRootState, string>((state) => state.token)
+  // const token = useSelector<TRootState, string>((state) => state.token)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(saveToken())
