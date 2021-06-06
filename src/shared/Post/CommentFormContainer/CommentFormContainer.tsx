@@ -33,7 +33,7 @@ export const CommentFormContainer: React.FC<ICommentFormContainer> = ({ refComme
       }}
       validationSchema={validationSchema}
     >
-      {({ values, errors, touched, dirty, isValid, handleChange, handleBlur, handleSubmit }: FormikProps<IComment>) => (
+      {({ values, errors, touched, isValid, handleChange, handleBlur, handleSubmit }: FormikProps<IComment>) => (
         <form className={styles.form} onSubmit={handleSubmit}>
           <textarea
             ref={refCommentInput}
@@ -46,8 +46,7 @@ export const CommentFormContainer: React.FC<ICommentFormContainer> = ({ refComme
             }}
             onBlur={handleBlur}
           ></textarea>
-          {console.log('isValid', isValid)}
-          {console.log('dirty', dirty)}
+          {errors.comment && console.log('Ошибка ввода данных:', errors.comment)}
           <div className={styles.controls}>
             <div className={styles.buttons}></div>
             <button type='submit' disabled={!isValid} className={styles.button}>
