@@ -19,8 +19,11 @@
   },
   "homepage": "https://github.com/DjonyGH/React#readme",
   "dependencies": {
+    "@types/yup": "^0.29.11",
     "axios": "^0.21.1",
     "express": "^4.17.1",
+    "formik": "^2.2.9",
+    "lodash": "^4.17.21",
     "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -28,7 +31,7 @@
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
-    "tsc-init": "^2.1.0"
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.13.0",
