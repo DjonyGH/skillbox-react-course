@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { Ref, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { TRootState } from '../store/reducer'
 
@@ -13,15 +13,23 @@ interface IPostsData {
   comments?: number
 }
 
-export function usePostsData() {
-  const [data, setData] = useState<IPostsData[]>([])
-  const token = useSelector<TRootState, string>((state) => state.token)
+let p = 0
 
-  useEffect(() => {
+export function usePostsData(endOfList: HTMLDivElement | null, manualLoadMore: boolean) {
+  const token = useSelector<TRootState, string>((state) => state.token)
+  const [posts, setPosts] = useState<IPostsData[]>([])
+  const [loading, setLoading] = useState<boolean>(false)
+  const [nextPage, setNexPage] = useState<string>('')
+  const [loadMore, setLoadMore] = useState<boolean>(true)
+
+  const load = () => {
     if (!!token) {
+      console.log('Load')
+      setLoading(true)
       axios
-        .get('https://oauth.reddit.com/best', {
+        .get('https://oauth.reddit.com/rising', {
           headers: { Authorization: `bearer ${token}` },
+          params: { limit: 10, after: nextPage },
         })
         .then((resp) => {
           const postsData = resp.data.data.children
@@ -36,11 +44,46 @@ export function usePostsData() {
               comments: post.data.num_comments ? post.data.num_comments : 0,
             }
           })
-          setData(posts)
+          p++
+          p % 3 === 0 ? setLoadMore(false) : setLoadMore(true)
+          const after = resp.data.data.after
+          // console.log('after', after)
+          setNexPage(after)
+          setPosts((prevPosts) => prevPosts.concat(...posts))
         })
-        .catch(console.log)
-    }
-  }, [token])
+        .catch((error) => {
+          console.log(error)
+        })
+        .finally(() => {
+          setLoading(false)
 
-  return [data]
+          console.log('Page', p)
+        })
+    }
+  }
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          console.log('manualLoadMore', manualLoadMore)
+          console.log('LoadMore', loadMore)
+          if (loadMore || manualLoadMore) {
+            load()
+          }
+        }
+      },
+      { rootMargin: '10px' }
+    )
+    // if (manualLoadMore) {
+    //   load()
+    // }
+
+    endOfList && observer.observe(endOfList)
+    return () => {
+      endOfList && observer.unobserve(endOfList)
+    }
+  }, [token, endOfList, nextPage, manualLoadMore])
+
+  return { posts, loading, loadMore }
 }

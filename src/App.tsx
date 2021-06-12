@@ -7,7 +7,6 @@ import { Content } from './shared/Content'
 import { CardsList } from './shared/CardsList'
 import { useToken } from './hooks/useToken'
 import { UserContextProvider } from './shared/context/userContext'
-import { PostsContextProvider } from './shared/context/postsContext'
 import { Action, applyMiddleware, createStore, Middleware } from 'redux'
 import { rootReducer, saveToken, setToken, TRootState } from './store/reducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
@@ -38,14 +37,12 @@ function AppComponent() {
 
   return (
     <UserContextProvider>
-      <PostsContextProvider>
-        <Layout>
-          <Header />
-          <Content>
-            <CardsList />
-          </Content>
-        </Layout>
-      </PostsContextProvider>
+      <Layout>
+        <Header />
+        <Content>
+          <CardsList />
+        </Content>
+      </Layout>
     </UserContextProvider>
   )
 }

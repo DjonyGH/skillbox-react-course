@@ -5,7 +5,7 @@ import { CardImgPreview } from './CardImgPreview'
 import { CardDropdownMenu } from './CardDropdownMenu'
 import { CardTextContent } from './CardTextContent'
 import { CardDropdownMenuMobile } from './CardDropdownMenuMobile'
-import { IPostsContextData } from '../../context/postsContext'
+import { IPostsContextData } from '../CardsList'
 
 export function Card(props: IPostsContextData) {
   return (
