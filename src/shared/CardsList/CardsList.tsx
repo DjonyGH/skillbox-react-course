@@ -16,10 +16,7 @@ export interface IPostsContextData {
 export function CardsList() {
   const endOfList = useRef<HTMLDivElement>(null)
   const [manualLoadMore, setManualLoadMore] = useState<boolean>(false)
-  const { posts, loading, loadMore } = usePostsData(endOfList.current, manualLoadMore)
-
-  // console.log('loadMore', loadMore)
-  // console.log('manualLoadMore', manualLoadMore)
+  const { uniqPosts, loading, loadMore } = usePostsData(endOfList.current, manualLoadMore)
 
   useEffect(() => {
     if (loadMore) setManualLoadMore(false)
@@ -27,8 +24,8 @@ export function CardsList() {
 
   return (
     <ul className={styles.cardList}>
-      {posts.length < 1 && !loading && <div style={{ textAlign: 'center' }}>Нет ни одного поста</div>}
-      {posts.map((post: IPostsContextData) => (
+      {uniqPosts.length < 1 && !loading && <div style={{ textAlign: 'center' }}>Нет ни одного поста</div>}
+      {uniqPosts.map((post: IPostsContextData) => (
         <Card
           key={post.id}
           id={post.id}

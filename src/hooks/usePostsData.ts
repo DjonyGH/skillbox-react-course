@@ -27,7 +27,7 @@ export function usePostsData(endOfList: HTMLDivElement | null, manualLoadMore: b
       console.log('Load')
       setLoading(true)
       axios
-        .get('https://oauth.reddit.com/rising', {
+        .get('https://oauth.reddit.com/best', {
           headers: { Authorization: `bearer ${token}` },
           params: { limit: 10, after: nextPage },
         })
@@ -47,7 +47,6 @@ export function usePostsData(endOfList: HTMLDivElement | null, manualLoadMore: b
           p++
           p % 3 === 0 ? setLoadMore(false) : setLoadMore(true)
           const after = resp.data.data.after
-          // console.log('after', after)
           setNexPage(after)
           setPosts((prevPosts) => prevPosts.concat(...posts))
         })
@@ -56,7 +55,6 @@ export function usePostsData(endOfList: HTMLDivElement | null, manualLoadMore: b
         })
         .finally(() => {
           setLoading(false)
-
           console.log('Page', p)
         })
     }
@@ -66,8 +64,6 @@ export function usePostsData(endOfList: HTMLDivElement | null, manualLoadMore: b
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          console.log('manualLoadMore', manualLoadMore)
-          console.log('LoadMore', loadMore)
           if (loadMore || manualLoadMore) {
             load()
           }
@@ -75,9 +71,6 @@ export function usePostsData(endOfList: HTMLDivElement | null, manualLoadMore: b
       },
       { rootMargin: '10px' }
     )
-    // if (manualLoadMore) {
-    //   load()
-    // }
 
     endOfList && observer.observe(endOfList)
     return () => {
@@ -85,5 +78,11 @@ export function usePostsData(endOfList: HTMLDivElement | null, manualLoadMore: b
     }
   }, [token, endOfList, nextPage, manualLoadMore])
 
-  return { posts, loading, loadMore }
+  const uniqPosts: IPostsData[] = posts.filter((post, index, posts) =>
+    index === posts.findIndex((t) => (
+      t.id === post.id
+    ))
+  )
+
+  return { uniqPosts, loading, loadMore }
 }
