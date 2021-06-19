@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styles from './cardTextContent.css'
 import { calcElapsedTime } from '../../../../utils/react/calcElapsedTime'
 import { Post } from '../../../Post'
+import { Link, Route, useHistory } from 'react-router-dom'
 
 interface ICardTextContentProps {
   id?: string
@@ -11,7 +12,7 @@ interface ICardTextContentProps {
 }
 
 export function CardTextContent({ id, title, author, created }: ICardTextContentProps) {
-  const [isModalOpened, setIsModalOpened] = useState(false)
+  const history = useHistory()
   return (
     <div className={styles.textContent}>
       <div className={styles.metaData}>
@@ -29,9 +30,9 @@ export function CardTextContent({ id, title, author, created }: ICardTextContent
         <span className={styles.createdAt}>{created ? calcElapsedTime(created) : ''}</span>
       </div>
       <h2 className={styles.title}>
-        <a href='#post-url' className={styles.postLink} onClick={() => setIsModalOpened(true)}>
+        <Link to={`/posts/${id}`} className={styles.postLink}>
           {title}
-        </a>
+        </Link>
       </h2>
       <div className={styles.viewedAd}>
         <svg width='16' height='11' viewBox='0 0 16 11' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -42,7 +43,15 @@ export function CardTextContent({ id, title, author, created }: ICardTextContent
         </svg>
         1 час назад
       </div>
-      {isModalOpened && <Post title={title} id={id} onClose={() => setIsModalOpened(false)} />}
+      <Route path='/posts/:id'>
+        <Post
+          title={title}
+          id={id}
+          onClose={() => {
+            history.push('/posts')
+          }}
+        />
+      </Route>
     </div>
   )
 }

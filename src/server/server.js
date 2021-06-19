@@ -8,10 +8,6 @@ const app = express()
 
 app.use('/static', express.static('./public/client'))
 
-app.get('/', (req, res) => {
-  res.send(indexTemplate(ReactDOM.renderToString(App())))
-})
-
 app.get('/auth', (req, res) => {
   axios
     .post(
@@ -27,6 +23,10 @@ app.get('/auth', (req, res) => {
       res.send(indexTemplate(ReactDOM.renderToString(App()), data.access_token))
     })
     .catch(console.log)
+})
+
+app.get('*', (req, res) => {
+  res.send(indexTemplate(ReactDOM.renderToString(App())))
 })
 
 app.listen(3000, () => {

@@ -23,8 +23,8 @@ export function usePostsData(endOfList: HTMLDivElement | null, manualLoadMore: b
   const [loadMore, setLoadMore] = useState<boolean>(true)
 
   const load = () => {
+    console.log('Load', token)
     if (!!token) {
-      console.log('Load')
       setLoading(true)
       axios
         .get('https://oauth.reddit.com/best', {
@@ -61,9 +61,11 @@ export function usePostsData(endOfList: HTMLDivElement | null, manualLoadMore: b
   }
 
   useEffect(() => {
+    console.log('useEffect', endOfList)
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
+          console.log('test', loadMore, manualLoadMore)
           if (loadMore || manualLoadMore) {
             load()
           }
@@ -78,10 +80,8 @@ export function usePostsData(endOfList: HTMLDivElement | null, manualLoadMore: b
     }
   }, [token, endOfList, nextPage, manualLoadMore])
 
-  const uniqPosts: IPostsData[] = posts.filter((post, index, posts) =>
-    index === posts.findIndex((t) => (
-      t.id === post.id
-    ))
+  const uniqPosts: IPostsData[] = posts.filter(
+    (post, index, posts) => index === posts.findIndex((t) => t.id === post.id)
   )
 
   return { uniqPosts, loading, loadMore }
