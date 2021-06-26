@@ -22,8 +22,6 @@ export function CardsList() {
     if (loadMore) setManualLoadMore(false)
   }, [loadMore])
 
-  console.log('CardsList', uniqPosts)
-
   return (
     <ul className={styles.cardList}>
       {uniqPosts.length < 1 && !loading && <div style={{ textAlign: 'center' }}>Нет ни одного поста</div>}

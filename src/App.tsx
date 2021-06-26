@@ -17,12 +17,9 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 function AppComponent() {
-  console.log('start', window.__token__)
-
   const dispatch = useDispatch()
   useEffect(() => {
     const token = localStorage.getItem('token')
-    console.log('test1', token, window.__token__)
     if (window.__token__ === 'undefined' && token) {
       window.__token__ = token
     }

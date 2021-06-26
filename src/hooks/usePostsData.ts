@@ -23,7 +23,6 @@ export function usePostsData(endOfList: HTMLDivElement | null, manualLoadMore: b
   const [loadMore, setLoadMore] = useState<boolean>(true)
 
   const load = () => {
-    console.log('Load', token)
     if (!!token) {
       setLoading(true)
       axios
@@ -55,17 +54,14 @@ export function usePostsData(endOfList: HTMLDivElement | null, manualLoadMore: b
         })
         .finally(() => {
           setLoading(false)
-          console.log('Page', p)
         })
     }
   }
 
   useEffect(() => {
-    console.log('useEffect', endOfList)
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          console.log('test', loadMore, manualLoadMore)
           if (loadMore || manualLoadMore) {
             load()
           }

@@ -13,7 +13,7 @@ export function UserBlock({ avatarSrc, userName }: IUserBlockProps) {
   const loading = useSelector<TRootState, boolean>((state) => state.me.loading)
   return (
     <a
-      href={`https://www.reddit.com/api/v1/authorize?client_id=${process.env.CLIENT_ID}&response_type=code&state=random_string&redirect_uri=http://localhost:3000/auth&duration=permanent&scope=read submit identity`}
+      href={`https://www.reddit.com/api/v1/authorize?client_id=${process.env.CLIENT_ID}&response_type=code&state=random_string&redirect_uri=http://${process.env.REDIRECT}/auth&duration=permanent&scope=read submit identity`}
       className={styles.userBlock}
     >
       <div className={styles.userAvatar}>

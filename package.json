@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "learning react with skillbox",
   "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "cross-env CLIENT_ID=4tBfGNXkyB1M9g NODE_ENV=development node ./bin/dev.js"
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "dev": "cross-env CLIENT_ID=4tBfGNXkyB1M9g SECRET=FfxWmrQtcVvG8D4QOUQUOeF5Jk97BA REDIRECT=localhost:3000 NODE_ENV=development node ./bin/dev.js",
+    "start": "cross-env CLIENT_ID=hb6wQ05xDLfAIA SECRET=-_fH5l8hClrkSwxbmhhVje3mTJo33g REDIRECT=skillbox-react-course.herokuapp.com node ./public/server/server.js"
   },
   "repository": {
     "type": "git",
@@ -33,9 +37,7 @@
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
-    "yup": "^0.32.9"
-  },
-  "devDependencies": {
+    "yup": "^0.32.9",
     "@hot-loader/react-dom": "^16.13.0",
     "@types/jest": "^26.0.13",
     "@types/react": "^16.9.49",
