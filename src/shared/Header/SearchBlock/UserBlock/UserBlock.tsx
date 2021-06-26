@@ -9,8 +9,6 @@ interface IUserBlockProps {
   userName?: string
 }
 
-console.log('>>>', process.env.CLIENT_ID)
-
 export function UserBlock({ avatarSrc, userName }: IUserBlockProps) {
   const loading = useSelector<TRootState, boolean>((state) => state.me.loading)
   return (
