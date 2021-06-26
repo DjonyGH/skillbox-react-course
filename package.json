@@ -8,9 +8,9 @@
   },
   "scripts": {
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "build": "cross-env NODE_ENV=production CLIENT_ID=hb6wQ05xDLfAIA SECRET=-_fH5l8hClrkSwxbmhhVje3mTJo33g REDIRECT=skillbox-react-course.herokuapp.com webpack --config webpack.config.js",
-    "dev": "cross-env CLIENT_ID=4tBfGNXkyB1M9g SECRET=FfxWmrQtcVvG8D4QOUQUOeF5Jk97BA REDIRECT=localhost:3000 NODE_ENV=development node ./bin/dev.js",
-    "start": "cross-env CLIENT_ID=hb6wQ05xDLfAIA SECRET=-_fH5l8hClrkSwxbmhhVje3mTJo33g REDIRECT=skillbox-react-course.herokuapp.com node ./public/server/server.js"
+    "build": "cross-env NODE_ENV=production CLIENT_ID=hb6wQ05xDLfAIA SECRET=-_fH5l8hClrkSwxbmhhVje3mTJo33g REDIRECT=https://skillbox-react-course.herokuapp.com/auth webpack --config webpack.config.js",
+    "dev": "cross-env CLIENT_ID=4tBfGNXkyB1M9g SECRET=FfxWmrQtcVvG8D4QOUQUOeF5Jk97BA REDIRECT=http://localhost:3000/auth NODE_ENV=development node ./bin/dev.js",
+    "start": "cross-env CLIENT_ID=hb6wQ05xDLfAIA SECRET=-_fH5l8hClrkSwxbmhhVje3mTJo33g REDIRECT=https://skillbox-react-course.herokuapp.com/auth node ./public/server/server.js"
   },
   "repository": {
     "type": "git",
