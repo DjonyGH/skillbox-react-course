@@ -28,9 +28,7 @@ export const CommentFormContainer: React.FC<ICommentFormContainer> = ({ refComme
       initialValues={initialValuesForm}
       enableReinitialize
       validateOnBlur
-      onSubmit={(value) => {
-        console.log(value)
-      }}
+      onSubmit={(value) => {}}
       validationSchema={validationSchema}
     >
       {({ values, errors, touched, isValid, handleChange, handleBlur, handleSubmit }: FormikProps<IComment>) => (

@@ -17,9 +17,7 @@ const MENU = [
 ].map(generateId)
 
 export function CardDropdownMenu() {
-  const handleItemClick = (id: string) => {
-    console.log('id', id)
-  }
+  const handleItemClick = (id: string) => {}
   return (
     <div className={styles.cardDropdownMenu}>
       <Dropdown button={<CardMenuButton />}>

@@ -13,8 +13,6 @@ export function useUserData() {
   const token = useSelector<TRootState, string>((state) => state.token)
   const dispatch = useDispatch()
 
-  console.log('>>', data, '>>', token)
-
   useEffect(() => {
     if (!!token) {
       dispatch(meRequestAsync())
