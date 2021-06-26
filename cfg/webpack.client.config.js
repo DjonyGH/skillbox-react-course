@@ -8,15 +8,6 @@ const IS_PROD = !IS_DEV
 
 const GLOBAL_CSS_REGEXP = /\.global\.css$/
 
-const DEV_PLUGINS = [new CleanWebpackPlugin(), new HotModuleReplacementPlugin()]
-
-const COMMON_PLUGINS = [
-  new DefinePlugin({
-    'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'`,
-    'process.env.REDIRECT': `'${process.env.REDIRECT}'`,
-  }),
-]
-
 function setupDevTool() {
   if (IS_DEV) return 'eval'
   if (IS_PROD) return false
@@ -35,7 +26,6 @@ function getEntry() {
 function getPlugins() {
   if (IS_PROD) {
     return [
-      new CleanWebpackPlugin(),
       new DefinePlugin({
         'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'`,
         'process.env.REDIRECT': `'${process.env.REDIRECT}'`,
