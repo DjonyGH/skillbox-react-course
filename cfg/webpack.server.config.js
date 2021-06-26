@@ -65,7 +65,7 @@ module.exports = {
   plugins: [
     new DefinePlugin({
       'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'`,
-      // 'process.env.REDIRECT': `'${process.env.REDIRECT}'`,
+      'process.env.REDIRECT': `'${process.env.REDIRECT}'`,
     }),
   ],
 }
