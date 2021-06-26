@@ -32,6 +32,25 @@ function getEntry() {
   ]
 }
 
+function getPlugins() {
+  if (IS_PROD) {
+    return [
+      new DefinePlugin({
+        'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'`,
+        'process.env.REDIRECT': `'${process.env.REDIRECT}'`,
+      }),
+    ]
+  }
+  return [
+    new CleanWebpackPlugin(),
+    new HotModuleReplacementPlugin(),
+    new DefinePlugin({
+      'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'`,
+      'process.env.REDIRECT': `'${process.env.REDIRECT}'`,
+    }),
+  ]
+}
+
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
@@ -88,5 +107,5 @@ module.exports = {
     ],
   },
   devtool: setupDevTool(),
-  plugins: IS_DEV ? DEV_PLUGINS.concat(COMMON_PLUGINS) : COMMON_PLUGINS,
+  plugins: getPlugins(),
 }
