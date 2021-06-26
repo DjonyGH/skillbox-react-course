@@ -35,6 +35,7 @@ function getEntry() {
 function getPlugins() {
   if (IS_PROD) {
     return [
+      new CleanWebpackPlugin(),
       new DefinePlugin({
         'process.env.CLIENT_ID': `'${process.env.CLIENT_ID}'`,
         'process.env.REDIRECT': `'${process.env.REDIRECT}'`,
