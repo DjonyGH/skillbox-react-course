@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { useCloseOnClickOut } from '../../hooks/useCloseOnClickOut'
 import { useCommentsData } from '../../hooks/useCommentsData'
-import { CommentForm } from './CommentForm'
 import { Comment } from './Comment'
 import styles from './post.css'
 import { CommentFormContainer } from './CommentFormContainer'
@@ -22,6 +21,8 @@ export function Post({ id, title, onClose }: IPostProps) {
 
   const node = document.querySelector('.modal_root')
   if (!node) return null
+
+  console.log('Post render')
 
   return ReactDOM.createPortal(
     <div className={styles.modal} ref={ref}>

@@ -1,11 +1,11 @@
-import React, { ChangeEvent, FormEvent, useContext } from 'react'
+import React, { ChangeEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TRootState, updateComment } from '../../../store/reducer'
-import { commentContext } from '../../context/commentContext'
-import { CommentForm } from '../CommentForm/CommentForm'
 import styles from './commentform.css'
 import { Formik, FormikProps } from 'formik'
 import * as Yup from 'yup'
+import { observer } from 'mobx-react-lite'
+import CommentStore from '../../../storeMobx/comment.store'
 
 interface ICommentFormContainer {
   refCommentInput: React.RefObject<HTMLTextAreaElement>
@@ -15,13 +15,17 @@ interface IComment {
   comment: string
 }
 
-export const CommentFormContainer: React.FC<ICommentFormContainer> = ({ refCommentInput }) => {
+export const CommentFormContainer: React.FC<ICommentFormContainer> = observer(({ refCommentInput }) => {
   const value = useSelector<TRootState, string>((state) => state.commentText)
   const dispatch = useDispatch()
+  // const { comment, setComment } = new CommentStore()
+  // const initialValuesForm: IComment = { comment: comment }
   const initialValuesForm: IComment = { comment: value }
   const validationSchema = Yup.object().shape({
     comment: Yup.string().min(3, 'Минимум 3 символа').required('Обязательное поле'),
   })
+
+  console.log('test')
 
   return (
     <Formik
@@ -42,6 +46,7 @@ export const CommentFormContainer: React.FC<ICommentFormContainer> = ({ refComme
             value={values.comment}
             onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
               handleChange(e)
+              // setComment(e.target.value)
               dispatch(updateComment(e.target.value))
             }}
             onBlur={handleBlur}
@@ -57,4 +62,4 @@ export const CommentFormContainer: React.FC<ICommentFormContainer> = ({ refComme
       )}
     </Formik>
   )
-}
+})
