@@ -1,20 +1,18 @@
-import { makeObservable, observable, action } from 'mobx'
+import { makeAutoObservable, observable, action } from 'mobx'
+import { createContext } from 'react'
 
 class CommentStore {
   public comment: string = ''
 
   constructor() {
-    makeObservable<CommentStore>(this, {
-      comment: observable,
-      setComment: action,
-    })
+    makeAutoObservable(this)
   }
 
-  public setComment(value: string) {
+  public setComment = (value: string) => {
     this.comment = value
   }
 }
 
-export default CommentStore
+export default new CommentStore()
 
 export interface ICommentStore extends CommentStore {}

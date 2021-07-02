@@ -22,8 +22,6 @@ export function Post({ id, title, onClose }: IPostProps) {
   const node = document.querySelector('.modal_root')
   if (!node) return null
 
-  console.log('Post render')
-
   return ReactDOM.createPortal(
     <div className={styles.modal} ref={ref}>
       <h2 className={styles.title}>{title}</h2>

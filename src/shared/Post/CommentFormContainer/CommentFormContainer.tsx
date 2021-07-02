@@ -1,6 +1,4 @@
 import React, { ChangeEvent } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { TRootState, updateComment } from '../../../store/reducer'
 import styles from './commentform.css'
 import { Formik, FormikProps } from 'formik'
 import * as Yup from 'yup'
@@ -16,16 +14,11 @@ interface IComment {
 }
 
 export const CommentFormContainer: React.FC<ICommentFormContainer> = observer(({ refCommentInput }) => {
-  const value = useSelector<TRootState, string>((state) => state.commentText)
-  const dispatch = useDispatch()
-  // const { comment, setComment } = new CommentStore()
-  // const initialValuesForm: IComment = { comment: comment }
-  const initialValuesForm: IComment = { comment: value }
+  const { comment, setComment } = CommentStore
+  const initialValuesForm: IComment = { comment: comment }
   const validationSchema = Yup.object().shape({
     comment: Yup.string().min(3, 'Минимум 3 символа').required('Обязательное поле'),
   })
-
-  console.log('test')
 
   return (
     <Formik
@@ -46,8 +39,7 @@ export const CommentFormContainer: React.FC<ICommentFormContainer> = observer(({
             value={values.comment}
             onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
               handleChange(e)
-              // setComment(e.target.value)
-              dispatch(updateComment(e.target.value))
+              setComment(e.target.value)
             }}
             onBlur={handleBlur}
           ></textarea>
