@@ -1,5 +1,4 @@
-import { makeAutoObservable, observable, action } from 'mobx'
-import { createContext } from 'react'
+import { makeAutoObservable } from 'mobx'
 
 class CommentStore {
   public comment: string = ''
